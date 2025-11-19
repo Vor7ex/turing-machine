@@ -1,11 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simulador de Máquina de Turing - Validador de Contraseñas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <h1>Simulador de Máquina de Turing</h1>
+            <p class="subtitle">Validador de Contraseñas: [a-zA-Z0-9]{8,}</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>Entrada de Datos</h2>
+                <div class="input-group">
+                    <label for="tapeInput">Ingrese la cadena a validar:</label>
+                    <input 
+                        type="text" 
+                        id="tapeInput" 
+                        placeholder="Ej: Password123"
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="control-buttons">
+                    <button id="loadBtn" class="btn btn-primary">Cargar Cinta</button>
+                    <button id="stepBtn" class="btn btn-secondary" disabled>Paso a Paso</button>
+                    <button id="runBtn" class="btn btn-success" disabled>Ejecutar Auto</button>
+                    <button id="resetBtn" class="btn btn-danger" disabled>Reiniciar</button>
+                </div>
+                <div class="speed-control">
+                    <label for="speedSlider">Velocidad de ejecución:</label>
+                    <input type="range" id="speedSlider" min="100" max="1000" value="400" step="50">
+                    <span id="speedValue">400ms</span>
+                </div>
+            </section>
+
+            <!-- State Display -->
+            <section class="state-section">
+                <h2>Estado Actual</h2>
+                <div class="state-info">
+                    <div class="state-item">
+                        <span class="label">Estado:</span>
+                        <span id="currentState" class="value">-</span>
+                    </div>
+                    <div class="state-item">
+                        <span class="label">Posición del Cabezal:</span>
+                        <span id="headPosition" class="value">-</span>
+                    </div>
+                    <div class="state-item">
+                        <span class="label">Símbolo Leído:</span>
+                        <span id="currentSymbol" class="value">-</span>
+                    </div>
+                    <div class="state-item">
+                        <span class="label">Pasos Ejecutados:</span>
+                        <span id="stepCount" class="value">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tape Display -->
+            <section class="tape-section">
+                <h2>Cinta de la Máquina de Turing</h2>
+                <div class="tape-container">
+                    <div id="tape" class="tape"></div>
+                </div>
+                <div class="tape-legend">
+                    <span class="legend-item"><span class="legend-box head"></span> Cabezal</span>
+                    <span class="legend-item"><span class="legend-box alpha"></span> Alfanumérico</span>
+                    <span class="legend-item"><span class="legend-box special"></span> No Alfanumérico</span>
+                    <span class="legend-item"><span class="legend-box blank"></span> Blanco (⊔)</span>
+                </div>
+            </section>
+
+            <!-- Result Display -->
+            <section class="result-section">
+                <h2>Resultado</h2>
+                <div id="result" class="result-box">
+                    <p class="result-message">Esperando entrada...</p>
+                </div>
+            </section>
+
+            <!-- Transition Table Reference -->
+            <section class="info-section">
+                <details>
+                    <summary>Ver Tabla de Transiciones</summary>
+                    <div class="transition-info">
+                        <p><strong>Estados:</strong></p>
+                        <ul>
+                            <li><strong>q0 - q6:</strong> Estados contadores (1-7 caracteres)</li>
+                            <li><strong>q7:</strong> Estado previo a la aceptación (8 caracteres)</li>
+                            <li><strong>q_acc:</strong> Estado de aceptación (≥8 caracteres alfanuméricos)</li>
+                            <li><strong>q_rej:</strong> Estado de rechazo (cadena inválida)</li>
+                        </ul>
+                        <p><strong>Símbolos:</strong></p>
+                        <ul>
+                            <li><strong>A:</strong> Cualquier carácter alfanumérico [a-zA-Z0-9]</li>
+                            <li><strong>A':</strong> Cualquier carácter NO alfanumérico</li>
+                            <li><strong>⊔:</strong> Símbolo en blanco (fin de cinta)</li>
+                        </ul>
+                        <p><strong>Movimientos:</strong></p>
+                        <ul>
+                            <li><strong>R:</strong> Derecha (Right)</li>
+                            <li><strong>S:</strong> Quieto (Stay)</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+        </main>
+
+        <footer>
+            <p>Gramáticas y Lenguajes Formales - Juan Alejandro Salgado Arcila</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
