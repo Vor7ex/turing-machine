@@ -1,3 +1,11 @@
+# Información del proyecto
+
+El presente proyecto busca construir un simulador de Máquina de Turing (MT) con HTML, CSS y JavaScript que emule un Autómata Finito (AFD) diseñado para validar una expresión regular (Regex) de un formulario web.
+
+Realizado para la materia de Gramáticas y Lenguajes Formales.
+
+Autor: Juan Alejandro Salgado Arcila
+
 # Entregable (Fase 1)
 
 ## Regex elegido
