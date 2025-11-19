@@ -6,6 +6,8 @@ Se eligió el regex correspondiente a una contraseña simple: [a-zA-Z0-9]{8,}. C
 
 ## Diagrama AFD
 
+![Diagrama AFD [a-zA-Z0-9]{8,}](https://imgur.com/a/0vUqhRj)
+
 ## Tabla de transición de la MT
 
 Usaremos las siguientes abreviaturas:
